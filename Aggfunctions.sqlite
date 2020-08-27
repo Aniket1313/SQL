@@ -1,0 +1,53 @@
+Trends in Startups
+Howdy! It’s your first day as a TechCrunch reporter. Your first task is to write an article on the rising trends in the startup world.
+To get you started with your research, your boss emailed you a project.sqlite file that contains a table called startups. It is a portfolio of some of the biggest names in the industry.
+Write queries with aggregate functions to retrieve some interesting insights about these companies.
+
+Q.Calculate the total number of companies in the table.
+SELECT COUNT(*)
+FROM startups;
+
+Q.What is the highest amount raised by a startup?
+Return the maximum amount of money raised.
+
+
+Q.Return the average valuation, in each category.
+Round the averages to two decimal places.
+Lastly, order the list from highest averages to lowest.
+
+A.SELECT category,ROUND(AVG(valuation),2)
+FROM startups 
+GROUP BY 1 
+ORDER BY 2 DESC;
+
+
+Q.First, return the name of each category with the total number of companies that belong to it.
+
+A.SELECT category,COUNT(*)
+FROM startups
+GROUP BY category
+
+
+Q.What are the most competitive markets?
+SELECT category, COUNT(*)
+FROM startups
+GROUP BY category
+HAVING COUNT(*) > 3
+ORDER BY 2 DESC;
+
+Q.What is the average size of a startup in each location, with average sizes above 500?
+SELECT location,AVG(employees) 
+FROM startups
+GROUP BY location 
+HAVING AVG(employees) > 500;
+
+******QUIZ*******
+SELECT price,
+   COUNT(*) 
+FROM menu
+WHERE orders > 50
+GROUP BY price;
+
+This Query calculates the total number of menu orders more than 50 times for each price. 
+
+
